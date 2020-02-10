@@ -43,7 +43,21 @@ class Auto {
 	 * @param string $nomMarque - La marque à rechercher
 	 * @param string $nomModele - Le modele à rechercher dans la marque
 	 * @return array - Le array du modele ou false
-	 */
+	 */ 
+	static public function trouverModele($autos,$nomMarque,$nomModele){ 
+	 
+		if(!isset($autos[$nomMarque])){ 
+			return false;
+		}
+		
+		if(!isset($autos[$nomMarque][$nomModele])){ 
+			return false;
+		}
+		
+		$resultat = $autos[$nomMarque][$nomModele];  
+	
+	 return $resultat;
+	} 
 
 
 	/** Méthode "ariane" qui retourne le HTML du fil d'Ariane se trouvant DANS le div "menu"
@@ -55,6 +69,19 @@ class Auto {
 	 * @return string - Le HTML du fil d'Ariane
 	 */
 
+	 public static function ariane($nomMarque="",$nomModele=""){ 
+		
+		 $resultat=''; 
+		
+
+		 $resultat.='<nav id="ariane">'; 
+		 $resultat.='<ul>'; 
+		 $resultat.='<li><a href="index.php">Accueil</a></li>'; 
+		 $resultat.='<li><a href="marque.php?nomMarque=Ferrari">Ferrari</a></li>'; 
+		 $resultat.='<li><span>California</span></li>'; 
+		 $resultat.='</ul>'; 
+		 $resultat.='</nav>';
+	 }
 	 
 	/** Méthode "lien" qui retourne le code HTML d'un lien retrouvé dans la page index
 	 * qui permet d'afficher les détails d'une voiture
